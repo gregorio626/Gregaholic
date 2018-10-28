@@ -43222,7 +43222,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/*! Buefy v0.7.0 | MIT License | github.com/buefy/buefy */ 
+/*! Buefy v0.7.0 | MIT License | github.com/buefy/buefy */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(true)
 		module.exports = factory(__webpack_require__(9));
