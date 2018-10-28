@@ -17,7 +17,7 @@
 // Font Awesome
 @import 'node_modules/font-awesome/scss/font-awesome';
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-}
+// Custom SASS Pages
+@import 'overrides'; // Styles that override framework
+@import 'helpers';  // Class helpers
+@import 'styles'; // Main styles file
