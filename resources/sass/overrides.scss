@@ -1,0 +1,18 @@
+$primary-blue: #0855ff;
+
+/* ========================================
+   =========== Nav Override ==========
+   ======================================== */
+
+.navbar {
+  height: 4.5rem;
+}
+
+.navbar-item img {
+  max-height: 2.8rem;
+}
+
+.button-signup {
+  background-color: $primary-blue;
+  color: $white;
+}

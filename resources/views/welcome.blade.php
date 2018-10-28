@@ -1,98 +1,103 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+  <!-- CSRF Token -->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
+  <title>Gregaholic</title>
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
+  <!-- Scripts -->
+  <script src="{{ asset('js/app.js') }}" defer></script>
 
-            .full-height {
-                height: 100vh;
-            }
+  <!-- Styles -->
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
 
-            .position-ref {
-                position: relative;
-            }
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+        <a class="navbar-item" href="{{ route('home') }}">
+          <img src="{{ asset('images/logo_large.png') }}">
+        </a>
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
 
-            .content {
-                text-align: center;
-            }
+        <div id="navbarMenu" class="navbar-menu">
 
-            .title {
-                font-size: 84px;
-            }
+          <div class="navbar-start">
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
+            <a class="navbar-item is-tab" href="{{ route('home') }}">Home</a>
+            <a class="navbar-item is-tab">Blog</a>
+            <a class="navbar-item is-tab">Forum</a>
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
+            <div class="navbar-item has-dropdown is-hoverable">
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
+              <a class="navbar-link">More</a>
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
+              <div class="navbar-dropdown">
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                <a class="navbar-item">About</a>
+                <a class="navbar-item">Contact</a>
+                <a class="navbar-item">Legal</a>
+                <hr class="navbar-divider">
+                <a class="navbar-item">Report an issue</a>
+
+              </div>
             </div>
+          </div>
+
+          <div class="navbar-end">
+            @if (Auth::guest())
+              <div class="navbar-item">
+                <div class="buttons">
+                  <a class="button button-signup"><strong>Sign up</strong></a>
+                  <a class="button is-light">Log in</a>
+                </div>
+              </div>
+            @else
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link" href="#">
+                  Hey Greg
+                </a>
+
+                <div class="navbar-dropdown" href="#">
+                  <a class="navbar-item">
+                    Profile
+                  </a>
+                  <a class="navbar-item" href="#">
+                    Notifications
+                  </a>
+                  <a class="navbar-item" href="#">
+                    Settings
+                  </a>
+                  <hr class="navbar-divider">
+                  <div class="navbar-item">
+                    Logout
+                  </div>
+                </div>
+              </div>
+            @endif
+          </div>
         </div>
-    </body>
+      </div>
+    </nav>
+
+
+
+    <main class="py-4">
+      @yield('content')
+    </main>
+  </div>
+</body>
 </html>
